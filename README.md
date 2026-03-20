@@ -1,5 +1,19 @@
 # Claude Code Skills
 
+## Sharing Skills
+
+To install all skills from this repo on your machine:
+
+```bash
+git clone <this-repo-url>
+cd U1
+bash install-skills.sh
+```
+
+Then **restart Claude Code** (or open a new session). The skills will be available automatically.
+
+---
+
 ## Installed Skills
 
 ### document-processing/pdf-processing-pro
