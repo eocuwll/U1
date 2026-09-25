@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--ARTIFACT-START-->
+<title>Normathèque NM–EN</title>
+<meta name="description" content="Normes marocaines NM et leurs équivalences européennes (EN) et françaises (NF, NF DTU), par domaine et mots-clés.">
+<meta name="theme-color" content="#14507a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#f2f3f0; --surface:#ffffff; --sunk:#e8eae5; --ink:#1b232c; --muted:#5b6670; --line:#d6dad3;
+  --accent:#14507a; --accent-ink:#ffffff; --accent-soft:#dde8f0;
+  --nm:#a3322a; --nm-soft:#f5e3e0; --eu:#2b4c9b; --eu-soft:#e2e8f6; --fr:#1f6b50; --fr-soft:#dcefe6;
+  --ok:#1f6b50; --warn:#9a5b00; --warn-soft:#f7ead3; --none:#6b7178; --none-soft:#e7e8e6;
+  --shadow:0 1px 2px rgba(20,40,60,.08);
+  --f-disp:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#12171c; --surface:#1a2128; --sunk:#222a32; --ink:#e6eaee; --muted:#9aa5ae; --line:#2e3841;
+    --accent:#6fb0dc; --accent-ink:#0c1a24; --accent-soft:#1d3342;
+    --nm:#f08a80; --nm-soft:#3a2220; --eu:#9ab4f0; --eu-soft:#222d45; --fr:#7fd1ab; --fr-soft:#1b3329;
+    --ok:#7fd1ab; --warn:#f0bd6c; --warn-soft:#3a2d17; --none:#a3a9ae; --none-soft:#2a3036;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#12171c; --surface:#1a2128; --sunk:#222a32; --ink:#e6eaee; --muted:#9aa5ae; --line:#2e3841;
+  --accent:#6fb0dc; --accent-ink:#0c1a24; --accent-soft:#1d3342;
+  --nm:#f08a80; --nm-soft:#3a2220; --eu:#9ab4f0; --eu-soft:#222d45; --fr:#7fd1ab; --fr-soft:#1b3329;
+  --ok:#7fd1ab; --warn:#f0bd6c; --warn-soft:#3a2d17; --none:#a3a9ae; --none-soft:#2a3036;
+  --shadow:none;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:16px/1.5 var(--f-body);-webkit-text-size-adjust:100%}
+button,input,select{font:inherit;color:inherit}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px}
+
+/* En-tête */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--paper);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding-block:12px 8px}
+.brand h1{margin:0;font:700 1.5rem/1 var(--f-disp);letter-spacing:.01em}
+.brand h1 .nm{color:var(--nm)} .brand h1 .eu{color:var(--eu)}
+.brand p{margin:0;color:var(--muted);font-size:.9rem}
+.searchrow{display:flex;gap:8px;padding-bottom:10px}
+.searchbox{flex:1;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:0 10px;box-shadow:var(--shadow)}
+.searchbox svg{flex:none;color:var(--muted)}
+.searchbox input{flex:1;min-width:0;border:0;background:transparent;padding:11px 0;outline:none;font-size:1.02rem}
+.iconbtn{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:0 12px;cursor:pointer;color:var(--muted)}
+.iconbtn:hover{color:var(--ink)}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{flex:none;border:0;background:none;padding:8px 12px 10px;cursor:pointer;color:var(--muted);font:600 .98rem var(--f-disp);letter-spacing:.02em;text-transform:uppercase;border-bottom:3px solid transparent}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.tabs .count{font-weight:500;color:var(--muted);margin-left:4px}
+
+main{padding-block:16px 48px}
+section[role="tabpanel"]{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+
+/* Filtres */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters select{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:7px 8px;max-width:100%;min-width:0;flex:1 1 200px}
+.filters .meta{margin-left:auto;color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 10px;font-size:.88rem;cursor:pointer}
+.chip:hover{border-color:var(--accent)}
+.chip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+
+/* Légende statut */
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.84rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+/* Résultats */
+.results{display:grid;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.row{display:grid;grid-template-columns:150px 1fr auto;gap:4px 16px;padding:12px 14px;border-top:1px solid var(--line);align-items:start}
+.row:first-child{border-top:0}
+.row>*{min-width:0}
+.titre,.more p{overflow-wrap:anywhere}
+.code{font:600 1.08rem/1.25 var(--f-disp);color:var(--nm);font-variant-numeric:tabular-nums;word-break:break-word}
+.lotlabel{display:block;color:var(--muted);font:500 .8rem var(--f-body);margin-top:2px}
+.titre{font-weight:600;line-height:1.35}
+.eqs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.eq{display:inline-flex;align-items:baseline;gap:6px;border-radius:4px;padding:2px 8px;font-size:.9rem}
+.eq b{font:700 .72rem var(--f-disp);letter-spacing:.06em}
+.eq.eu{background:var(--eu-soft);color:var(--eu)} .eq.fr{background:var(--fr-soft);color:var(--fr)}
+.eq span{color:var(--ink)}
+.st{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;padding:1px 8px;border-radius:999px;white-space:nowrap}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st-imanor,.st-titre{color:var(--ok);background:var(--fr-soft)}
+.st-auto{color:var(--eu);background:var(--eu-soft)}
+.st-fonc,.st-verif{color:var(--warn);background:var(--warn-soft)}
+.st-aucune{color:var(--none);background:var(--none-soft)}
+.actions{display:flex;gap:4px}
+.actions button{border:0;background:none;cursor:pointer;color:var(--muted);padding:4px;border-radius:4px;line-height:0}
+.actions button:hover{color:var(--ink);background:var(--sunk)}
+.actions button[aria-pressed="true"]{color:#c58a00}
+.more{grid-column:2 / 4;display:grid;gap:8px;font-size:.95rem}
+.more p{margin:0;max-width:75ch;color:var(--ink)}
+.more .note{color:var(--muted);font-size:.88rem}
+.more .links{display:flex;flex-wrap:wrap;gap:10px;font-size:.9rem}
+.toggle{border:0;background:none;color:var(--accent);cursor:pointer;padding:0;font-size:.88rem;margin-top:6px}
+.empty{padding:28px 16px;text-align:center;color:var(--muted)}
+.loadmore{justify-self:center;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:8px 16px;cursor:pointer}
+
+/* Domaines */
+.lead{margin:0;color:var(--muted);max-width:70ch}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.dtile{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:12px 14px;cursor:pointer;display:grid;gap:4px;box-shadow:var(--shadow)}
+.dtile:hover{border-color:var(--accent)}
+.dtile[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.dtile h3{margin:0;font:600 1.12rem/1.2 var(--f-disp)}
+.dtile p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.35}
+.dtile .n{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;gap:14px;box-shadow:var(--shadow)}
+.panel h2{margin:0;font:700 1.4rem/1.2 var(--f-disp);text-wrap:balance}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.step{border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:grid;gap:6px;align-content:start}
+.step h4{margin:0;font:600 .82rem var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.step button.go{justify-self:start;border:0;background:var(--accent);color:var(--accent-ink);border-radius:5px;padding:6px 12px;cursor:pointer;font-weight:600}
+.reftable{width:100%;border-collapse:collapse;font-size:.94rem}
+.reftable td{padding:7px 8px;border-top:1px solid var(--line);vertical-align:top}
+.reftable td:first-child{width:62px}
+.reftable .ref{font-weight:600;white-space:nowrap}
+.tag{display:inline-block;white-space:nowrap;font:700 .7rem var(--f-disp);letter-spacing:.06em;padding:1px 6px;border-radius:3px}
+.tag-EC{background:var(--accent-soft);color:var(--accent)} .tag-DTU{background:var(--fr-soft);color:var(--fr)}
+.tag-NFEN{background:var(--eu-soft);color:var(--eu)} .tag-NF{background:var(--fr-soft);color:var(--fr)}
+.tag-MA{background:var(--nm-soft);color:var(--nm)} .tag-REG{background:var(--none-soft);color:var(--none)}
+.callout{border-left:3px solid var(--warn);background:var(--warn-soft);padding:8px 12px;border-radius:0 6px 6px 0;font-size:.92rem}
+.scroll{overflow-x:auto}
+
+/* DTU */
+.dtutable{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:.95rem}
+.dtutable th{text-align:left;font:600 .8rem var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:9px 10px;background:var(--sunk)}
+.dtutable td{padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+.dtutable td.r{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.minisearch{display:flex;gap:8px;align-items:center}
+.minisearch input{flex:1;min-width:0;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:8px 10px}
+h2.sec{margin:6px 0 0;font:700 1.25rem var(--f-disp)}
+
+/* Sources */
+.prose{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px;max-width:78ch}
+.prose h3{font:700 1.1rem var(--f-disp);margin:14px 0 4px}
+.prose h3:first-child{margin-top:0}
+.prose ul{padding-left:20px;margin:6px 0}
+.prose p{margin:6px 0}
+
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:6px;font-size:.9rem;z-index:20}
+
+@media (max-width:640px){
+  .row{grid-template-columns:1fr auto}
+  .row .code{grid-column:1 / 2}
+  .row .body{grid-column:1 / 3;grid-row:2}
+  .more{grid-column:1 / 3}
+  .filters .meta{margin-left:0;width:100%}
+  .brand p{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<!--HEAD-END-->
+</head>
+<body>
+<!--BODY-START-->
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <h1>Normathèque <span class="nm">NM</span>–<span class="eu">EN</span></h1>
+      <p>Normes marocaines et équivalences européennes / françaises</p>
+    </div>
+    <form class="searchrow" id="searchform" role="search">
+      <label class="searchbox" for="q">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" autocomplete="off" placeholder="Mot-clé ou référence : agglo, regard béton, EN 206, 10.1.008…" aria-label="Rechercher une norme">
+      </label>
+      <button type="button" class="iconbtn" id="clearq" aria-label="Effacer la recherche">✕</button>
+    </form>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button role="tab" id="tab-recherche" aria-controls="p-recherche" aria-selected="true">Recherche</button>
+      <button role="tab" id="tab-domaines" aria-controls="p-domaines" aria-selected="false">Guide par domaine</button>
+      <button role="tab" id="tab-dtu" aria-controls="p-dtu" aria-selected="false">DTU &amp; Eurocodes</button>
+      <button role="tab" id="tab-favoris" aria-controls="p-favoris" aria-selected="false">Favoris<span class="count" id="favcount"></span></button>
+      <button role="tab" id="tab-sources" aria-controls="p-sources" aria-selected="false">Sources</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section role="tabpanel" id="p-recherche" aria-labelledby="tab-recherche">
+    <div class="filters">
+      <select id="f-lot" aria-label="Filtrer par lot"></select>
+      <select id="f-nature" aria-label="Filtrer par nature">
+        <option value="">Toutes natures</option>
+        <option value="produit">Produits / spécifications</option>
+        <option value="essai">Essais / méthodes</option>
+        <option value="oeuvre">Mise en œuvre / exécution</option>
+      </select>
+      <select id="f-eq" aria-label="Filtrer par équivalence">
+        <option value="">Toutes équivalences</option>
+        <option value="sure">Équivalence sûre (IMANOR, NF EN, titre)</option>
+        <option value="averif">À vérifier / fonctionnelle</option>
+        <option value="aucune">Sans équivalence connue</option>
+      </select>
+      <span class="meta" id="meta"></span>
+    </div>
+    <div class="chips" id="activechips"></div>
+    <div class="legend" id="legend"></div>
+    <div class="results" id="results"></div>
+    <button class="loadmore" id="loadmore" hidden>Afficher plus</button>
+  </section>
+
+  <section role="tabpanel" id="p-domaines" aria-labelledby="tab-domaines" hidden>
+    <p class="lead">Choisissez un domaine. Le guide indique quel type de texte chercher (produit, mise en œuvre, calcul) et les références françaises et européennes usuelles, puis ouvre les normes NM du domaine.</p>
+    <div class="dgrid" id="dgrid"></div>
+    <div id="dpanel"></div>
+  </section>
+
+  <section role="tabpanel" id="p-dtu" aria-labelledby="tab-dtu" hidden>
+    <div class="minisearch"><input id="dtuq" type="search" placeholder="Filtrer les DTU : carrelage, 40.2, étanchéité…" aria-label="Filtrer les DTU"></div>
+    <h2 class="sec">NF DTU en vigueur <small style="font:400 .9rem var(--f-body);color:var(--muted)">(liste CSTB du 9 juillet 2025)</small></h2>
+    <div class="scroll"><table class="dtutable" id="dtutable"><thead><tr><th>Référence</th><th>Objet</th><th>Normes NM liées</th></tr></thead><tbody></tbody></table></div>
+    <h2 class="sec">Eurocodes</h2>
+    <div class="scroll"><table class="dtutable" id="ectable"><thead><tr><th>Norme</th><th>Eurocode</th><th>Objet</th><th>NM</th></tr></thead><tbody></tbody></table></div>
+    <p class="lead">En France : NF EN 199x + annexe nationale (AN). Au Maroc, vérifier la reprise NM correspondante et, pour le séisme, appliquer le RPS 2000 (rév. 2011).</p>
+  </section>
+
+  <section role="tabpanel" id="p-favoris" aria-labelledby="tab-favoris" hidden>
+    <p class="lead">Normes marquées d’une étoile. Elles restent sur cet appareil.</p>
+    <div class="results" id="favresults"></div>
+  </section>
+
+  <section role="tabpanel" id="p-sources" aria-labelledby="tab-sources" hidden>
+    <div class="prose">
+      <h3>Contenu</h3>
+      <ul>
+        <li><b id="s-count"></b> normes marocaines (NM) extraites du guide IMANOR « Conformité aux normes dans les achats publics », édition 2023 – V12, 11 lots.</li>
+        <li>Liste des DTU : CSTB, « Liste des DTU en vigueur au 9 juillet 2025 ».</li>
+        <li>Références FR/EU par domaine : normes usuelles de la profession (Eurocodes, normes produits EN, normes NF).</li>
+      </ul>
+      <h3>Lire le statut d’une équivalence</h3>
+      <ul id="s-legend"></ul>
+      <h3>Limites</h3>
+      <ul>
+        <li>Une équivalence n’autorise pas une substitution : comparez l’édition, les classes et les exigences.</li>
+        <li>Les éditions (année, amendements, compléments nationaux /CN) ne sont pas indiquées : vérifiez-les chez IMANOR (imanor.gov.ma) ou AFNOR avant de prescrire.</li>
+        <li>Le guide IMANOR couvre les produits des marchés publics, pas l’ensemble des ~16 000 normes marocaines.</li>
+        <li>Textes réglementaires marocains (RPS 2000, RTCM…) et marchés : la validation d’un ingénieur qualifié reste nécessaire.</li>
+      </ul>
+      <h3>Données</h3>
+      <p>Base embarquée, utilisable hors ligne. Version des données : septembre 2026.</p>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast" hidden></div>
+
+<script src="data/normes.js"></script>
+<script src="data/guide.js"></script>
+<script>
+(function(){
+'use strict';
+var N = window.NORMES || [], LOTS = window.NORMES_LOTS || {}, DOM = window.DOMAINES || [],
+    DTU = window.DTU || [], EC = window.EUROCODES || [], SYN = window.SYNONYMES || {};
+var $ = function(s){return document.querySelector(s)};
+var STATUS = {
+  imanor:['Équivalence IMANOR','Référence citée dans le guide IMANOR.'],
+  titre:['Même intitulé','NM nationale dont l’intitulé est identique à un texte français.'],
+  auto:['EN → NF EN','Norme EN : reprise en France sous « NF EN », même numéro.'],
+  fonc:['Équivalent fonctionnel','Même produit ou ouvrage, textes différents : comparer avant substitution.'],
+  verif:['À vérifier','ISO / IEC / CEN-TS : reprise française possible, non confirmée.'],
+  aucune:['Pas d’équivalence connue','NM nationale sans correspondance dans cette base.']
+};
+var store = {get:function(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+             set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[’']/g,' ')}
+function compact(s){return norm(s).replace(/[^a-z0-9]/g,'')}
+function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+// Index
+N.forEach(function(x,i){
+  x.i=i;
+  x.codes=compact(x.c+' '+x.eu+' '+x.fr+' '+x.e);
+  x.ht=norm(x.t); x.hd=norm(x.d);
+  x.hl=norm(x.l.map(function(l){return LOTS[l]||''}).join(' '));
+  var t=x.ht;
+  x.nat=/\b(essai|essais|methode|methodes|determination|mesure|analyse|echantillonnage)\b/.test(t)?'essai':
+        /(mise en oeuvre|execution|travaux de|pose |installation|regle|cahier des clauses|conception)/.test(t)?'oeuvre':'produit';
+});
+var byCode={}; N.forEach(function(x){byCode[x.c]=x});
+
+var state={q:'',lot:'',nat:'',eq:'',lots:null,lotsLabel:'',shown:40,open:{}};
+var favs=store.get('favs',[]);
+
+// Filtres
+(function(){
+  var sel=$('#f-lot'), o='<option value="">Tous les lots IMANOR</option>';
+  Object.keys(LOTS).forEach(function(k){
+    var depth=k.split('.').length-2;
+    o+='<option value="'+k+'">'+(depth?'   ':'')+k.replace(/^4\./,'Lot ')+' – '+esc(LOTS[k])+'</option>';
+  });
+  sel.innerHTML=o;
+  var lg='';
+  ['imanor','titre','auto','fonc','verif','aucune'].forEach(function(s){lg+='<span><i class="st st-'+s+'">'+STATUS[s][0]+'</i></span>'});
+  $('#legend').innerHTML=lg;
+  var sl='';
+  ['imanor','titre','auto','fonc','verif','aucune'].forEach(function(s){sl+='<li><span class="st st-'+s+'">'+STATUS[s][0]+'</span> '+STATUS[s][1]+'</li>'});
+  $('#s-legend').innerHTML=sl;
+  $('#s-count').textContent=N.length.toLocaleString('fr-FR');
+})();
+
+function expandTokens(q){
+  var nq=norm(q).trim(); if(!nq) return [];
+  Object.keys(SYN).forEach(function(k){
+    var re=new RegExp('(^|\\s)'+k.replace(/\s/g,'\\s')+'(?=\\s|$)');
+    if(re.test(nq)) nq=nq.replace(re,'$1'+'{'+k+'|'+norm(SYN[k])+'}');
+  });
+  var out=[], re2=/\{([^}]*)\}|(\S+)/g, m;
+  while((m=re2.exec(nq))){
+    if(m[1]){var parts=m[1].split('|');out.push({alts:[parts[0]].concat([parts[1]]),multi:true});}
+    else out.push({alts:[m[2]]});
+  }
+  return out;
+}
+var STOP=['au','aux','de','du','des','la','le','les','pour','et','un','une','en','sur','par','avec'];
+function tokenScore(x,alt){
+  var words=alt.split(/\s+/).filter(function(w){return (w.length>1||/\d/.test(w))&&STOP.indexOf(w)<0});
+  if(!words.length) return 0;
+  var s=0;
+  for(var i=0;i<words.length;i++){
+    var w=words[i], c=compact(w), ws=0;
+    if(/\d/.test(w) && x.codes.indexOf(c)>=0) ws=12;
+    else if(x.ht.indexOf(w)>=0) ws=4;
+    else if(x.hl.indexOf(w)>=0) ws=2;
+    else if(x.hd.indexOf(w)>=0) ws=1;
+    else if(w.length>4 && x.ht.indexOf(w.slice(0,-1))>=0) ws=3; // pluriels
+    if(!ws) return 0;
+    s+=ws;
+  }
+  return s;
+}
+function search(){
+  var toks=expandTokens(state.q), res=[];
+  var qc=compact(state.q), codeLike=/\d/.test(state.q)&&qc.length>=3;
+  for(var i=0;i<N.length;i++){
+    var x=N[i];
+    if(state.lot && x.l.indexOf(state.lot)<0 && !x.l.some(function(l){return l.indexOf(state.lot+'.')===0})) continue;
+    if(state.lots && !x.l.some(function(l){return state.lots.some(function(L){return l===L||l.indexOf(L+'.')===0})})) continue;
+    if(state.nat && x.nat!==state.nat) continue;
+    if(state.eq==='sure' && ['imanor','titre','auto'].indexOf(x.s)<0) continue;
+    if(state.eq==='averif' && ['fonc','verif'].indexOf(x.s)<0) continue;
+    if(state.eq==='aucune' && x.s!=='aucune') continue;
+    var score=1;
+    if(toks.length){
+      score=0;
+      if(codeLike && x.codes.indexOf(qc)>=0) score=40;
+      if(!score){
+        var used=0, fail=false;
+        for(var t=0;t<toks.length;t++){
+          if(!toks[t].multi && (STOP.indexOf(toks[t].alts[0])>=0 || (toks[t].alts[0].length<2 && !/\d/.test(toks[t].alts[0])))) continue;
+          var best=0;
+          toks[t].alts.forEach(function(a){best=Math.max(best,tokenScore(x,a))});
+          used++;
+          if(!best){fail=true;break}
+          score+=best;
+        }
+        if(fail) score=0; else if(!used) score=1;
+      }
+      if(!score) continue;
+    }
+    res.push([score,x]);
+  }
+  res.sort(function(a,b){return b[0]-a[0]||a[1].i-b[1].i});
+  return res.map(function(r){return r[1]});
+}
+
+function gsearch(q){return 'https://www.google.com/search?q='+encodeURIComponent(q)}
+function rowHTML(x){
+  var open=!!state.open[x.c], fav=favs.indexOf(x.c)>=0;
+  var lots=x.l.map(function(l){return l.replace(/^4\./,'Lot ')}).join(' · ');
+  var eqs='';
+  if(x.eu) eqs+='<span class="eq eu"><b>EU/INT</b><span>'+esc(x.eu)+'</span></span>';
+  if(x.fr) eqs+='<span class="eq fr"><b>FR</b><span>'+esc(x.fr)+'</span></span>';
+  eqs+='<span class="st st-'+x.s+'" title="'+esc(STATUS[x.s][1])+'">'+STATUS[x.s][0]+'</span>';
+  var more='';
+  if(open){
+    var frq=(x.fr||'').replace(/\s*\(.*$/,'').split(' ou ')[0];
+    more='<div class="more">'+
+      (x.d?'<p>'+esc(x.d)+'</p>':'<p class="note">Domaine d’application non renseigné.</p>')+
+      (x.e?'<p class="note">Équivalence citée par IMANOR : <b>'+esc(x.e)+'</b></p>':'')+
+      (x.n?'<p class="note">'+esc(x.n)+'</p>':'')+
+      '<p class="note">Lots : '+x.l.map(function(l){return esc(l.replace(/^4\./,'')+' '+(LOTS[l]||''))}).join(' · ')+'</p>'+
+      '<div class="links"><a href="'+gsearch('"'+x.c+'" site:imanor.gov.ma')+'" target="_blank" rel="noopener">Chercher sur IMANOR</a>'+
+      (frq?'<a href="'+gsearch('"'+frq+'" site:boutique.afnor.org')+'" target="_blank" rel="noopener">Chercher « '+esc(frq)+' » chez AFNOR</a>':'')+
+      '</div></div>';
+  }
+  return '<div class="row" data-c="'+esc(x.c)+'">'+
+    '<div class="code">'+esc(x.c)+'<span class="lotlabel">'+esc(lots)+'</span></div>'+
+    '<div class="body"><div class="titre">'+esc(x.t||'(intitulé non renseigné)')+'</div><div class="eqs">'+eqs+'</div>'+
+    '<button class="toggle" data-act="open">'+(open?'Masquer le détail':'Domaine d’application')+'</button></div>'+
+    '<div class="actions"><button data-act="copy" aria-label="Copier la référence" title="Copier"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>'+
+    '<button data-act="fav" aria-pressed="'+fav+'" aria-label="Favori" title="Favori"><svg width="17" height="17" viewBox="0 0 24 24" fill="'+(fav?'currentColor':'none')+'" stroke="currentColor" stroke-width="2"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></svg></button></div>'+
+    more+'</div>';
+}
+
+var lastRes=[];
+function render(){
+  lastRes=search();
+  var list=lastRes.slice(0,state.shown);
+  $('#results').innerHTML=list.length?list.map(rowHTML).join(''):
+    '<div class="empty">Aucune norme ne correspond. Essayez un terme plus général (ex. « tube », « béton »), retirez un filtre, ou ouvrez le <a href="#domaines" data-go="domaines">guide par domaine</a>.</div>';
+  $('#meta').textContent=lastRes.length.toLocaleString('fr-FR')+' norme'+(lastRes.length>1?'s':'')+' NM';
+  $('#loadmore').hidden=lastRes.length<=state.shown;
+  var chips='';
+  if(state.lots) chips+='<button class="chip on" data-clear="lots">Domaine : '+esc(state.lotsLabel)+' ✕</button>';
+  $('#activechips').innerHTML=chips;
+}
+function renderFavs(){
+  var list=favs.map(function(c){return byCode[c]}).filter(Boolean);
+  $('#favresults').innerHTML=list.length?list.map(rowHTML).join(''):'<div class="empty">Aucun favori. Touchez l’étoile d’une norme pour la retrouver ici.</div>';
+  $('#favcount').textContent=favs.length?'('+favs.length+')':'';
+}
+
+function toast(msg){var t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true},1800)}
+function copyText(txt){
+  var done=function(){toast('Copié : '+txt.split('\n')[0])};
+  var fallback=function(){
+    var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');done()}catch(e){toast('Copie impossible')}
+    document.body.removeChild(ta);
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done,fallback); else fallback();
+}
+function onRowClick(e){
+  var b=e.target.closest('button[data-act]'); if(!b) return;
+  var row=b.closest('.row'), c=row.getAttribute('data-c'), x=byCode[c], act=b.getAttribute('data-act');
+  if(act==='open'){state.open[c]=!state.open[c]; row.outerHTML=rowHTML(x);}
+  else if(act==='fav'){
+    var k=favs.indexOf(c); if(k>=0) favs.splice(k,1); else favs.push(c);
+    store.set('favs',favs); row.outerHTML=rowHTML(x); renderFavs();
+  } else if(act==='copy'){
+    copyText(x.c+' – '+x.t+(x.eu?'\nEU/INT : '+x.eu:'')+(x.fr?'\nFR : '+x.fr:'')+'\nStatut : '+STATUS[x.s][0]);
+  }
+}
+$('#results').addEventListener('click',onRowClick);
+$('#favresults').addEventListener('click',onRowClick);
+$('#activechips').addEventListener('click',function(e){if(e.target.closest('[data-clear]')){state.lots=null;state.shown=40;render()}});
+$('#loadmore').addEventListener('click',function(){state.shown+=60;render()});
+
+var qt;
+$('#q').addEventListener('input',function(){clearTimeout(qt);qt=setTimeout(function(){state.q=$('#q').value;state.shown=40;showTab('recherche');render()},140)});
+$('#searchform').addEventListener('submit',function(e){e.preventDefault();state.q=$('#q').value;showTab('recherche');render()});
+$('#clearq').addEventListener('click',function(){$('#q').value='';state.q='';state.lots=null;render();$('#q').focus()});
+$('#f-lot').addEventListener('change',function(){state.lot=this.value;state.shown=40;render();store.set('lot',state.lot)});
+$('#f-nature').addEventListener('change',function(){state.nat=this.value;state.shown=40;render()});
+$('#f-eq').addEventListener('change',function(){state.eq=this.value;state.shown=40;render()});
+
+// Onglets
+var TABS=['recherche','domaines','dtu','favoris','sources'];
+function showTab(id){
+  TABS.forEach(function(t){
+    $('#tab-'+t).setAttribute('aria-selected',t===id);
+    $('#p-'+t).hidden=t!==id;
+  });
+  if(id==='favoris') renderFavs();
+  try{history.replaceState(null,'','#'+id)}catch(e){}
+}
+TABS.forEach(function(t){$('#tab-'+t).addEventListener('click',function(){showTab(t);window.scrollTo(0,0)})});
+document.addEventListener('click',function(e){var a=e.target.closest('[data-go]');if(a){e.preventDefault();showTab(a.getAttribute('data-go'))}});
+
+// Domaines
+function countLots(lots){
+  if(!lots.length) return 0;
+  return N.filter(function(x){return x.l.some(function(l){return lots.some(function(L){return l===L||l.indexOf(L+'.')===0})})}).length;
+}
+function renderDomains(){
+  $('#dgrid').innerHTML=DOM.map(function(d){
+    var n=countLots(d.lots);
+    return '<button class="dtile" data-d="'+d.id+'" aria-pressed="false"><h3>'+esc(d.nom)+'</h3><p>'+esc(d.q)+'</p><span class="n">'+(n?n+' normes NM':'Références FR/EU')+'</span></button>';
+  }).join('');
+}
+function openDomain(id){
+  var d=DOM.filter(function(x){return x.id===id})[0]; if(!d) return;
+  Array.prototype.forEach.call(document.querySelectorAll('.dtile'),function(b){b.setAttribute('aria-pressed',b.getAttribute('data-d')===id)});
+  var n=countLots(d.lots);
+  var dtus=d.refs.filter(function(r){return r[0]==='DTU'}), ecs=d.refs.filter(function(r){return r[0]==='EC'});
+  var html='<div class="panel" id="dp"><h2>'+esc(d.nom)+'</h2>'+
+   '<div class="steps">'+
+    '<div class="step"><h4>1 · Produit ou matériau</h4><div>Normes NM de spécification, puis la norme EN/NF correspondante.</div>'+
+      (n?'<button class="go" data-lots="'+d.lots.join(',')+'" data-nat="produit">Voir les produits NM</button>':'<div class="note" style="color:var(--muted)">Pas de lot IMANOR dédié : utilisez la recherche.</div>')+'</div>'+
+    '<div class="step"><h4>2 · Essais et contrôle</h4><div>Méthodes d’essai pour la réception et le contrôle qualité.</div>'+
+      (n?'<button class="go" data-lots="'+d.lots.join(',')+'" data-nat="essai">Voir les essais NM</button>':'')+'</div>'+
+    '<div class="step"><h4>3 · Mise en œuvre</h4><div>'+(dtus.length?'DTU : '+esc(dtus.map(function(r){return r[1]}).join(' · ')):'Normes d’exécution ci-dessous.')+'</div>'+
+      (n?'<button class="go" data-lots="'+d.lots.join(',')+'" data-nat="oeuvre">Voir l’exécution NM</button>':'')+'</div>'+
+    '<div class="step"><h4>4 · Calcul</h4><div>'+(ecs.length?esc(ecs.map(function(r){return r[1]}).join(' · ')):'Eurocode du matériau concerné (onglet DTU & Eurocodes).')+'</div></div>'+
+   '</div>'+
+   '<div><h4 style="margin:0 0 6px;font:600 .82rem var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Références françaises et européennes usuelles</h4>'+
+   '<div class="scroll"><table class="reftable">'+d.refs.map(function(r){return '<tr><td><span class="tag tag-'+r[0].replace(' ','')+'">'+r[0]+'</span></td><td class="ref">'+esc(r[1])+'</td><td>'+esc(r[2])+'</td></tr>'}).join('')+'</table></div></div>'+
+   (d.note?'<div class="callout">'+esc(d.note)+'</div>':'')+
+   '<div><h4 style="margin:0 0 6px;font:600 .82rem var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Mots-clés</h4><div class="chips">'+
+     d.mots.map(function(m){return '<button class="chip" data-kw="'+esc(m)+'">'+esc(m)+'</button>'}).join('')+'</div></div>'+
+   (n?'<button class="go loadmore" data-lots="'+d.lots.join(',')+'" data-nat="">Voir les '+n+' normes NM du domaine</button>':'')+
+  '</div>';
+  $('#dpanel').innerHTML=html;
+  $('#dpanel').setAttribute('data-d',id);
+  var p=$('#dp'); if(p&&p.scrollIntoView) p.scrollIntoView({behavior:'smooth',block:'start'});
+}
+$('#dgrid').addEventListener('click',function(e){var b=e.target.closest('.dtile');if(b)openDomain(b.getAttribute('data-d'))});
+$('#dpanel').addEventListener('click',function(e){
+  var g=e.target.closest('[data-lots]'), k=e.target.closest('[data-kw]');
+  var d=DOM.filter(function(x){return x.id===$('#dpanel').getAttribute('data-d')})[0];
+  if(g){
+    state.lots=g.getAttribute('data-lots').split(','); state.lotsLabel=d?d.nom:'';
+    state.nat=g.getAttribute('data-nat'); $('#f-nature').value=state.nat;
+    state.q=''; $('#q').value=''; state.lot=''; $('#f-lot').value=''; state.shown=40;
+    showTab('recherche'); render(); window.scrollTo(0,0);
+  } else if(k){
+    $('#q').value=k.getAttribute('data-kw'); state.q=$('#q').value; state.lots=null; state.nat=''; $('#f-nature').value='';
+    state.shown=40; showTab('recherche'); render(); window.scrollTo(0,0);
+  }
+});
+
+// DTU & Eurocodes
+function nmFor(query){
+  var saved=state.q, savedLots=state.lots, sl=state.lot, sn=state.nat, se=state.eq;
+  state.q=query; state.lots=null; state.lot=''; state.nat=''; state.eq='';
+  var r=search(); state.q=saved; state.lots=savedLots; state.lot=sl; state.nat=sn; state.eq=se; return r;
+}
+function dtuNM(ref){
+  var num=ref[0];
+  return N.filter(function(x){
+    var s=(x.e+' '+x.fr); return new RegExp('DTU '+num.replace('.','\\.')+'(?![\\d.])').test(s);
+  });
+}
+function renderDTU(){
+  var f=norm($('#dtuq').value);
+  var rows=DTU.filter(function(d){return !f||norm(d[1]+' '+d[2]).indexOf(f)>=0}).map(function(d){
+    var nms=dtuNM(d);
+    return '<tr><td class="r">'+esc(d[1])+'</td><td>'+esc(d[2])+'</td><td>'+(nms.length?nms.map(function(x){return '<a href="#recherche" data-code="'+esc(x.c)+'">'+esc(x.c)+'</a>'}).join(', '):'<span style="color:var(--muted)">—</span>')+'</td></tr>';
+  });
+  $('#dtutable tbody').innerHTML=rows.join('')||'<tr><td colspan="3" class="empty">Aucun DTU ne correspond.</td></tr>';
+  $('#ectable tbody').innerHTML=EC.map(function(e){
+    var nms=N.filter(function(x){return new RegExp(e[0].replace(' ','\\s?')+'(-|\\b)').test(x.eu)});
+    return '<tr><td class="r">NF '+esc(e[0])+'</td><td>'+esc(e[1])+'</td><td>'+esc(e[2])+'</td><td>'+(nms.length?nms.map(function(x){return '<a href="#recherche" data-code="'+esc(x.c)+'">'+esc(x.c)+'</a>'}).join(', '):'<span style="color:var(--muted)">—</span>')+'</td></tr>';
+  }).join('');
+}
+$('#dtuq').addEventListener('input',renderDTU);
+document.addEventListener('click',function(e){
+  var a=e.target.closest('[data-code]'); if(!a) return; e.preventDefault();
+  var c=a.getAttribute('data-code'); $('#q').value=c; state.q=c; state.lots=null; state.lot=''; $('#f-lot').value='';
+  state.nat=''; $('#f-nature').value=''; state.eq=''; $('#f-eq').value=''; state.open[c]=true; showTab('recherche'); render(); window.scrollTo(0,0);
+});
+
+// Démarrage : exemple de recherche parlante
+renderDomains(); renderDTU(); renderFavs();
+var h=(location.hash||'').slice(1);
+if(!state.q){ $('#q').value='regard béton'; state.q='regard béton'; }
+render();
+showTab(TABS.indexOf(h)>=0?h:'recherche');
+if('serviceWorker' in navigator && location.protocol==='https:' && !window.ARTIFACT){
+  try{navigator.serviceWorker.register('sw.js').catch(function(){})}catch(e){}
+}
+})();
+</script>
+<!--BODY-END-->
+</body>
+</html>
